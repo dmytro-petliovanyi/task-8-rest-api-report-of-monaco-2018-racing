@@ -1,4 +1,4 @@
-# Task 8 - REST API report of Monaco 2018 Racing
+# Task 7 - Web report of Monaco 2018 Racing
 
 
 
@@ -15,14 +15,14 @@ Already a pro? Just edit this README.md and make it your own. Want to make it ea
 
 ```
 cd existing_repo
-git remote add origin http://git.foxminded.ua/foxstudent103630/task-8-rest-api-report-of-monaco-2018-racing.git
+git remote add origin http://git.foxminded.ua/foxstudent103630/task-7-web-report-of-monaco-2018-racing.git
 git branch -M main
 git push -uf origin main
 ```
 
 ## Integrate with your tools
 
-- [ ] [Set up project integrations](http://git.foxminded.ua/foxstudent103630/task-8-rest-api-report-of-monaco-2018-racing/-/settings/integrations)
+- [ ] [Set up project integrations](http://git.foxminded.ua/foxstudent103630/task-7-web-report-of-monaco-2018-racing/-/settings/integrations)
 
 ## Collaborate with your team
 
