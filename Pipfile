@@ -1,0 +1,25 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[[source]]
+url = "https://test.pypi.org/simple/"
+verify_ssl = true
+name = "testpypi"
+
+[packages]
+flask = "*"
+task-6-report-of-monaco-2018-racing-by-petliovany = {version = "*", index = "testpypi"}
+python-dotenv = "*"
+mypy = "*"
+
+[dev-packages]
+flake8 = "*"
+isort = "*"
+mypy = "*"
+pre-commit = "*"
+pytest = "*"
+
+[requires]
+python_version = "3.10"
