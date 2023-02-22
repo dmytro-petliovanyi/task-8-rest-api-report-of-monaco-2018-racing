@@ -1,6 +1,6 @@
 from report_of_monaco_racing import Racer, groper, sort_racers
 
-from my_app import app
+from my_app.resources import app
 
 
 def racer_to_str(driver_id: str) -> str | None:
