@@ -10,8 +10,8 @@ packages = [{include = "task_8_rest_api_report_of_monaco_2018_racing"}]
 python = "^3.10"
 flask = "*"
 task-6-report-of-monaco-2018-racing-by-petliovany = {version = "*", source = "testpypi"}
-mypy = "*"
 flask-restful = "*"
+dicttoxml = "*"
 
 
 [[tool.poetry.source]]
