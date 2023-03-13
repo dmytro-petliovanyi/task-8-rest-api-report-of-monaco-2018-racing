@@ -12,6 +12,7 @@ flask = "*"
 task-6-report-of-monaco-2018-racing-by-petliovany = {version = "*", source = "testpypi"}
 flask-restful = "*"
 dicttoxml = "*"
+flasgger = "^0.9.5"
 
 
 [[tool.poetry.source]]

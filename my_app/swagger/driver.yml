@@ -1,0 +1,36 @@
+swagger: '2.0'
+info:
+  title: Example API
+  version: 1.0.0
+  description: An example API with a single endpoint
+
+
+/api/v1/report/drivers/{driver_id}:
+  get:
+    summary: Get a driver by ID
+    description: Returns the driver with the specified ID
+    parameters:
+      id:
+        type: string
+      driver_info:
+        type: string
+      responses:
+        200:
+          description: The requested driver
+          schema:
+            $ref: '#/components/schemas/Driver'
+        404:
+          description: Driver not found
+
+components:
+  schemas:
+    Driver:
+      type: object
+      properties:
+        driver_id:
+          type: string
+        driver_info:
+          type: string
+      example:
+        driver_id: "SVF"
+        driver_info: "Sebastian Vettel              | FERRARI                       | 1:04.415"
