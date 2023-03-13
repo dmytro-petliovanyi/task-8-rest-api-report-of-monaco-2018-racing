@@ -9,6 +9,15 @@ info:
   get:
     summary: List of drivers
     description: Returns a list of all reports
+    parameters:
+      - name: format
+        in: query
+        description: The format of the response (json or xml)
+        required: false
+        type: string
+        enum:
+          - json
+          - xml
     responses:
       200:
         description: List of all reports
@@ -27,5 +36,5 @@ components:
         driver_info:
           type: string
       example:
-        id: "1"
+        id: "SVF"
         driver_info: "Sebastian Vettel              | FERRARI                       | 1:04.415"

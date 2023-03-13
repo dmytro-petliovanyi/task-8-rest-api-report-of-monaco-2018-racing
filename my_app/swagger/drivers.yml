@@ -28,5 +28,5 @@ components:
         driver_info:
           type: string
       example:
-        driver_id: "SVF"
+        driver_id: "1"
         driver_info: "Sebastian Vettel              | FERRARI                       | 1:04.415"
