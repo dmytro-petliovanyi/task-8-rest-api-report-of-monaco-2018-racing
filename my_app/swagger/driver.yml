@@ -10,27 +10,27 @@ info:
     summary: Get a driver by ID
     description: Returns the driver with the specified ID
     parameters:
-      id:
+      - name: driver_id
+        in: path
+        required: true
+        schema:
+          type: string
+    responses:
+      200:
+        description: The requested driver
+        schema:
+          $ref: '#/definitions/Driver'
+      404:
+        description: Driver not found
+
+definitions:
+  Driver:
+    type: object
+    properties:
+      driver_id:
         type: string
       driver_info:
         type: string
-      responses:
-        200:
-          description: The requested driver
-          schema:
-            $ref: '#/components/schemas/Driver'
-        404:
-          description: Driver not found
-
-components:
-  schemas:
-    Driver:
-      type: object
-      properties:
-        driver_id:
-          type: string
-        driver_info:
-          type: string
-      example:
-        driver_id: "SVF"
-        driver_info: "Sebastian Vettel              | FERRARI                       | 1:04.415"
+    example:
+      driver_id: "SVF"
+      driver_info: "Sebastian Vettel              | FERRARI                       | 1:04.415"

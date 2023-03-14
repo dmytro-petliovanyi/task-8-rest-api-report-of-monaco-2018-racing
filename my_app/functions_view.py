@@ -5,7 +5,7 @@ from flask import Response, jsonify
 from report_of_monaco_racing import Racer, groper, sort_racers
 
 from my_app import app
-from my_app.constants import FormatEnum
+from my_app.static.constants import FormatEnum
 
 
 class HandleMyData:

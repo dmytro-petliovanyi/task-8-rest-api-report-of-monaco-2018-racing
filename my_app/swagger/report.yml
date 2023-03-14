@@ -24,17 +24,16 @@ info:
         schema:
           type: array
           items:
-            $ref: '#/components/schemas/Driver'
+            $ref: '#/definitions/Driver'
 
-components:
-  schemas:
-    Driver:
-      type: object
-      properties:
-        id:
-          type: string
-        driver_info:
-          type: string
-      example:
-        id: "SVF"
-        driver_info: "Sebastian Vettel              | FERRARI                       | 1:04.415"
+definitions:
+  Driver:
+    type: object
+    properties:
+      driver_id:
+        type: string
+      driver_info:
+        type: string
+    example:
+      id: "SVF"
+      driver_info: "Sebastian Vettel              | FERRARI                       | 1:04.415"

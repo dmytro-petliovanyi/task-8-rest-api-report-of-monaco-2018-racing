@@ -2,9 +2,9 @@ import datetime
 
 import pytest
 from report_of_monaco_racing import Racer
-
-from my_app.config import DefaultConfig
 from start import app
+
+from my_app.static.config import DefaultConfig
 
 racers_for_patch = [
         Racer(

@@ -2,8 +2,8 @@ from flasgger import swag_from
 from flask import jsonify, make_response, request
 from flask_restful import Resource
 
-from my_app.constants import OrderEnum
 from my_app.functions_view import HandleMyData
+from my_app.static.constants import OrderEnum
 
 handle = HandleMyData()
 
