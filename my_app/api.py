@@ -5,8 +5,7 @@ from my_app import app
 from my_app.resources import Driver, Drivers, Report
 
 api = Api(app)
-swagger = Swagger(app)
-
+swagger = Swagger(app=app)
 
 api.add_resource(Report, '/api/v1/report/')
 api.add_resource(Drivers, '/api/v1/report/drivers/')

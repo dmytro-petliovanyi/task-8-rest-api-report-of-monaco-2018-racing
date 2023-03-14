@@ -4,24 +4,22 @@ info:
   version: 1.0.0
   description: An example API with a single endpoint
 
-
-/api/v1/report/drivers/{driver_id}:
-  get:
-    summary: Get a driver by ID
-    description: Returns the driver with the specified ID
-    parameters:
-      - name: driver_id
-        in: path
-        required: true
-        schema:
-          type: string
-    responses:
-      200:
-        description: The requested driver
-        schema:
-          $ref: '#/definitions/Driver'
-      404:
-        description: Driver not found
+get:
+  summary: Get a driver by ID
+  description: Returns the driver with the specified ID
+  parameters:
+    - name: driver_id
+      in: path
+      required: true
+      schema:
+        type: string
+  responses:
+    200:
+      description: The requested driver
+      schema:
+        $ref: '#/definitions/Driver'
+    404:
+      description: Driver not found
 
 definitions:
   Driver:

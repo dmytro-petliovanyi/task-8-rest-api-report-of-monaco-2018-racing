@@ -1,5 +1,9 @@
 from enum import Enum
 
+swagger_config = {
+    'title': 'My API'
+}
+
 
 class OrderEnum(str, Enum):
     desc = "desc"

@@ -4,27 +4,25 @@ info:
   version: 1.0.0
   description: An example API with a single endpoint
 
-
-/api/v1/report:
-  get:
-    summary: List of drivers
-    description: Returns a list of all reports
-    parameters:
-      - name: format
-        in: query
-        description: The format of the response (json or xml)
-        required: false
-        type: string
-        enum:
-          - json
-          - xml
-    responses:
-      200:
-        description: List of all reports
-        schema:
-          type: array
-          items:
-            $ref: '#/definitions/Driver'
+get:
+  summary: List of drivers
+  description: Returns a list of all reports
+  parameters:
+    - name: format
+      in: query
+      description: The format of the response (json or xml)
+      required: false
+      type: string
+      enum:
+        - json
+        - xml
+  responses:
+    200:
+      description: List of all reports
+      schema:
+        type: array
+        items:
+          $ref: '#/definitions/Driver'
 
 definitions:
   Driver:
