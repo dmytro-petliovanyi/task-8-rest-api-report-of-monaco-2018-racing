@@ -4,7 +4,7 @@ import pytest
 from report_of_monaco_racing import Racer
 from start import app
 
-from my_app.static.config import DefaultConfig
+from my_app.my_settings.config import DefaultConfig
 
 racers_for_patch = [
         Racer(

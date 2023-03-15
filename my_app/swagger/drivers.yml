@@ -1,37 +1,30 @@
-swagger: '2.0'
-info:
-  title: Example API
-  version: 1.0.0
-  description: An example API with a single endpoint
-
-get:
-  summary: Get a list of all drivers
-  parameters:
-    - name: format
-      in: query
-      description: The format of the response (json or xml)
-      required: false
-      type: string
-      enum:
-        - json
-        - xml
-    - name: order
-      in: query
-      description: The order to sort drivers (asc or desc)
-      required: false
-      type: string
-      enum:
-        - asc
-        - desc
-  responses:
-    200:
-      description: Sorted list of all drivers
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: '#/definitions/DriverSort'
+summary: Get a list of all drivers
+parameters:
+  - name: format
+    in: query
+    description: The format of the response (json or xml)
+    required: false
+    type: string
+    enum:
+      - json
+      - xml
+  - name: order
+    in: query
+    description: The order to sort drivers (asc or desc)
+    required: false
+    type: string
+    enum:
+      - asc
+      - desc
+responses:
+  200:
+    description: Sorted list of all drivers
+    content:
+      application/json:
+        schema:
+          type: array
+          items:
+            $ref: '#/definitions/DriverSort'
 
 definitions:
   DriverSort:
