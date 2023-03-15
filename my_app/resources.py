@@ -8,7 +8,10 @@ from my_app.my_settings.constants import OrderEnum
 
 
 class ConfigResource(Resource):
-    handle = HandleMyData(app.config['TARGET_DIR'])
+    handle = HandleMyData("")
+
+    def __init__(self):
+        ConfigResource.handle = HandleMyData(app.config['TARGET_DIR'])
 
 
 class Report(ConfigResource):
