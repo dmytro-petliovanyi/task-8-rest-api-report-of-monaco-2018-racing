@@ -2,7 +2,7 @@ from xml.dom.minidom import parseString
 
 from dicttoxml import dicttoxml
 from flask import Response, jsonify
-from report_of_monaco_racing import Racer, groper, sort_racers
+from report_of_monaco_racing import Racer, groper
 
 from my_app.my_settings.constants import FormatEnum
 
@@ -11,14 +11,21 @@ class HandleMyData:
     def __init__(self, location: str) -> None:
         self._drivers_data = groper(location)
 
-    def racers_list_of_dict(self, racers: list[Racer]) -> list[dict]:
-        return [self.racer_to_dict(racer) for racer in racers]
+    def racers_list_of_full_dict(self, racers: list[Racer]) -> list[dict]:
+        return [self.racer_to_full_dict(racer) for racer in racers]
 
-    def racer_to_dict(self, racer: Racer) -> dict:
+    def racers_list_of_small_dict(self, racers: list[Racer]) -> list[dict]:
+        return [self.racer_to_small_dict(racer) for racer in racers]
+
+    def racer_to_full_dict(self, racer: Racer) -> dict:
         return {"abbr": self.get_abbr(racer),
                 "fullname": racer.fullname,
                 "team": racer.team,
                 "time": str(racer.best_lap)}
+
+    def racer_to_small_dict(self, racer: Racer) -> dict:
+        return {"abbr": self.get_abbr(racer),
+                "fullname": racer.fullname}
 
     def racers_add_place(self, racers_list_of_dict: list[dict]) -> list[dict]:
         for index in range(0, len(racers_list_of_dict)):
@@ -38,10 +45,6 @@ class HandleMyData:
     def add_place(racer_dict: dict, place) -> dict:
         racer_dict["place"] = place
         return racer_dict
-
-    @staticmethod
-    def sorted_racers(racers: list[Racer], reverse: bool = False) -> list[Racer]:
-        return sort_racers(racers, reverse)
 
     @staticmethod
     def get_abbr(driver: Racer) -> str:
