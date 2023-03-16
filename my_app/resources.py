@@ -26,7 +26,8 @@ class Report(Resource):
             )
         )
         racers_list = handle.racers_add_place(racers_list)
-        return make_response(format_check(args, racers_list), 200)
+
+        return format_check(args, racers_list)
 
 
 class Drivers(Resource):
@@ -38,9 +39,7 @@ class Drivers(Resource):
 
         racers_list_of_dict = handle.racers_list_of_small_dict(racers_list)
 
-        return make_response(format_check(
-            args, racers_list_of_dict
-        ), 200)
+        return format_check(args, racers_list_of_dict)
 
 
 class Driver(Resource):
@@ -48,12 +47,11 @@ class Driver(Resource):
     def get(self, driver_id: str) -> Response:
         handle = HandleMyData(app.config['TARGET_DIR'])
         args = request.args.to_dict()
+        driver = handle.find_racer(driver_id)
 
-        if driver_id:
-            driver = handle.find_racer(driver_id)
-            if driver:
-                driver_dict = handle.racer_to_full_dict(driver)
+        if driver:
+            driver_dict = handle.racer_to_full_dict(driver)
 
-                return make_response(format_check(args, driver_dict), 200)
+            return format_check(args, driver_dict)
 
         return make_response(jsonify({404: "Driver not found"}), 404)

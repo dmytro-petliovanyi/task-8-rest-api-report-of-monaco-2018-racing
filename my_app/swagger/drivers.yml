@@ -8,32 +8,22 @@ parameters:
     enum:
       - json
       - xml
-  - name: order
-    in: query
-    description: The order to sort drivers (asc or desc)
-    required: false
-    type: string
-    enum:
-      - asc
-      - desc
 responses:
   200:
-    description: Sorted list of all drivers
-    content:
-      application/json:
-        schema:
-          type: array
-          items:
-            $ref: '#/definitions/DriverSort'
+    description: List of all drivers
+    schema:
+      type: array
+      items:
+        $ref: '#/definitions/DriverSmall'
 
 definitions:
-  DriverSort:
+  DriverSmall:
     type: object
     properties:
-      id:
+      abbr:
         type: string
-      driver_info:
+      fullname:
         type: string
     example:
-      id: "1"
-      driver_info: "Sebastian Vettel              | FERRARI                       | 1:04.415"
+      abbr: "SVF"
+      fullname: "Sebastian Vettel"

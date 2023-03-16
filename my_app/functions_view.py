@@ -1,7 +1,7 @@
 from xml.dom.minidom import parseString
 
 from dicttoxml import dicttoxml
-from flask import Response, jsonify
+from flask import Response, jsonify, make_response
 from report_of_monaco_racing import Racer, groper
 
 from my_app.my_settings.constants import FormatEnum
@@ -53,17 +53,24 @@ class HandleMyData:
         return driver_abbr
 
 
-def format_check(args: dict, racers_list_or_dict: list[dict] | dict) -> Response | str:
-    if args.get("format"):
-        form = FormatEnum(args.get("format"))
+def format_handle(racers_list_or_dict: list[dict] | dict, **kwargs) -> Response | str:
 
-        if form == FormatEnum.json:
-            return jsonify(racers_list_or_dict)
+    form = FormatEnum(kwargs["format"])
 
-        elif form == FormatEnum.xml:
-            xml = dicttoxml(racers_list_or_dict, attr_type=False)
-            dom = parseString(xml)
+    if form == FormatEnum.json:
+        return jsonify(racers_list_or_dict)
 
-            return dom.toprettyxml()
+    elif form == FormatEnum.xml:
+        xml = dicttoxml(racers_list_or_dict, attr_type=False)
+        dom = parseString(xml)
+
+        return dom.toprettyxml()
 
     return jsonify(racers_list_or_dict)
+
+
+def format_check(args: dict, racers_list_or_dict: list[dict] | dict) -> Response:
+    if args.get("format"):
+        return make_response(format_handle(racers_list_or_dict, format=args["format"]), 200)
+
+    return make_response(jsonify(racers_list_or_dict), 200)
