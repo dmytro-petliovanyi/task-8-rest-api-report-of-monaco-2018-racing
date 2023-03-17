@@ -29,11 +29,11 @@ class HandleMyData:
 
     def racers_add_place(self, racers_list_of_dict: list[dict]) -> list[dict]:
         for index in range(0, len(racers_list_of_dict)):
-            self.add_place(racers_list_of_dict[index], index + 1)
+            racers_list_of_dict[index] = self.add_place(racers_list_of_dict[index], index + 1)
         return racers_list_of_dict
 
     def find_racer(self, driver_id: str) -> Racer | None:
-        for driver in self._drivers_data:
+        for driver in self.get_drivers_data():
             driver_abbr = self.get_abbr(driver)
             if driver_abbr == driver_id:
                 return driver

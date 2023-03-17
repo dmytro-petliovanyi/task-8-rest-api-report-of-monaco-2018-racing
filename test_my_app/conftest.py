@@ -2,9 +2,69 @@ import datetime
 
 import pytest
 from report_of_monaco_racing import Racer
-from start import app
 
+from my_app import app
 from my_app.my_settings.config import DefaultConfig
+
+full_list_of_dict_for_test_with_place = [
+    {
+        "abbr": "DRR",
+        "fullname": "Daniel Ricciardo",
+        "place": 1,
+        "team": "RED BULL RACING TAG HEUER",
+        "time": "0:02:47.987000"
+    },
+    {
+        "abbr": "SVF",
+        "fullname": "Sebastian Vettel",
+        "place": 2,
+        "team": "FERRARI",
+        "time": "0:01:04.415000"
+    },
+    {
+        "abbr": "LHM",
+        "fullname": "Lewis Hamilton",
+        "place": 3,
+        "team": "MERCEDES",
+        "time": "0:06:47.540000"
+    }
+]
+
+full_list_of_dict_for_test = [
+    {
+        "abbr": "DRR",
+        "fullname": "Daniel Ricciardo",
+        "team": "RED BULL RACING TAG HEUER",
+        "time": "0:02:47.987000"
+    },
+    {
+        "abbr": "SVF",
+        "fullname": "Sebastian Vettel",
+        "team": "FERRARI",
+        "time": "0:01:04.415000"
+    },
+    {
+        "abbr": "LHM",
+        "fullname": "Lewis Hamilton",
+        "team": "MERCEDES",
+        "time": "0:06:47.540000"
+    }
+]
+
+small_list_of_dict_for_test = [
+    {
+        "abbr": "DRR",
+        "fullname": "Daniel Ricciardo",
+    },
+    {
+        "abbr": "SVF",
+        "fullname": "Sebastian Vettel",
+    },
+    {
+        "abbr": "LHM",
+        "fullname": "Lewis Hamilton"
+    }
+]
 
 racers_for_patch = [
         Racer(
