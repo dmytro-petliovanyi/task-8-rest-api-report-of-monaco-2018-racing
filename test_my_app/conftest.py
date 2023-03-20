@@ -4,22 +4,23 @@ import pytest
 from report_of_monaco_racing import Racer
 
 from my_app import app
+from my_app.api import api  # noqa
 from my_app.my_settings.config import DefaultConfig
 
 full_list_of_dict_for_test_with_place = [
     {
-        "abbr": "DRR",
-        "fullname": "Daniel Ricciardo",
-        "place": 1,
-        "team": "RED BULL RACING TAG HEUER",
-        "time": "0:02:47.987000"
-    },
-    {
         "abbr": "SVF",
         "fullname": "Sebastian Vettel",
-        "place": 2,
+        "place": 1,
         "team": "FERRARI",
         "time": "0:01:04.415000"
+    },
+    {
+        "abbr": "DRR",
+        "fullname": "Daniel Ricciardo",
+        "place": 2,
+        "team": "RED BULL RACING TAG HEUER",
+        "time": "0:02:47.987000"
     },
     {
         "abbr": "LHM",
@@ -28,6 +29,31 @@ full_list_of_dict_for_test_with_place = [
         "team": "MERCEDES",
         "time": "0:06:47.540000"
     }
+]
+
+full_list_of_dict_for_test_with_place_desc = [
+    {
+        "abbr": "LHM",
+        "fullname": "Lewis Hamilton",
+        "place": 1,
+        "team": "MERCEDES",
+        "time": "0:06:47.540000"
+    },
+    {
+        "abbr": "DRR",
+        "fullname": "Daniel Ricciardo",
+        "place": 2,
+        "team": "RED BULL RACING TAG HEUER",
+        "time": "0:02:47.987000"
+    },
+    {
+        "abbr": "SVF",
+        "fullname": "Sebastian Vettel",
+        "place": 3,
+        "team": "FERRARI",
+        "time": "0:01:04.415000"
+    },
+
 ]
 
 full_list_of_dict_for_test = [
@@ -93,10 +119,3 @@ def client():
     app.config.from_object(DefaultConfig)
     with app.test_client() as client:
         yield client
-
-
-racers_dict = {
-    "DRR": "Daniel Ricciardo | RED BULL RACING TAG HEUER | 2:47.987",
-    "SVF": "Sebastian Vettel | FERRARI | 1:04.415",
-    "LHM": "Lewis Hamilton | MERCEDES | 6:47.545"
-}

@@ -27,7 +27,7 @@ responses:
 
 
 definitions:
-  DriverFull:
+  DriverFullPlace:
     type: object
     properties:
       driver_id:
