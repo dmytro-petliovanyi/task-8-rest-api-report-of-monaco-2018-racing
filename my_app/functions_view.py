@@ -2,7 +2,7 @@ from xml.dom.minidom import parseString
 
 from dicttoxml import dicttoxml
 from flask import Response, jsonify, make_response
-from report_of_monaco_racing import Racer, groper
+from report_of_monaco_racing import Racer, groper, sort_racers
 
 from my_app.my_settings.constants import FormatEnum
 
@@ -11,11 +11,14 @@ class HandleMyData:
     def __init__(self, location: str) -> None:
         self._drivers_data = groper(location)
 
+    def sort_racers_list(self, order_bool: bool):
+        return sort_racers(self._drivers_data, order_bool)
+
     def racers_list_of_full_dict(self, racers: list[Racer]) -> list[dict]:
         return [self.racer_to_full_dict(racer) for racer in racers]
 
-    def racers_list_of_small_dict(self, racers: list[Racer]) -> list[dict]:
-        return [self.racer_to_small_dict(racer) for racer in racers]
+    def racers_list_of_small_dict(self) -> list[dict]:
+        return [self.racer_to_small_dict(racer) for racer in self._drivers_data]
 
     def racer_to_full_dict(self, racer: Racer) -> dict:
         return {"abbr": self.get_abbr(racer),
@@ -53,24 +56,20 @@ class HandleMyData:
         return driver_abbr
 
 
-def format_handle(racers_list_or_dict: list[dict] | dict, **kwargs) -> Response | str:
+def format_handle(racers_list_or_dict: list[dict] | dict, form: str | None) -> Response | str:
+    if form:
+        form = FormatEnum(form)
 
-    form = FormatEnum(kwargs["format"])
+        if form == FormatEnum.xml:
+            xml = dicttoxml(racers_list_or_dict, attr_type=False)
+            dom = parseString(xml)
 
-    if form == FormatEnum.json:
-        return jsonify(racers_list_or_dict)
-
-    elif form == FormatEnum.xml:
-        xml = dicttoxml(racers_list_or_dict, attr_type=False)
-        dom = parseString(xml)
-
-        return dom.toprettyxml()
+            return dom.toprettyxml()
 
     return jsonify(racers_list_or_dict)
 
 
-def format_check(args: dict, racers_list_or_dict: list[dict] | dict) -> Response:
-    if args.get("format"):
-        return make_response(format_handle(racers_list_or_dict, format=args["format"]), 200)
+def format_check(form: str | None, racers_list_or_dict: list[dict] | dict, code: int) -> Response:
+    data = format_handle(racers_list_or_dict, form)
 
-    return make_response(jsonify(racers_list_or_dict), 200)
+    return make_response(data, code)

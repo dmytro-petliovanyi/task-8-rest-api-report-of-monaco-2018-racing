@@ -5,7 +5,7 @@ from report_of_monaco_racing import Racer
 
 from my_app import app
 from my_app.api import api  # noqa
-from my_app.my_settings.config import DefaultConfig
+from my_app.my_settings.config import TestConfig
 
 full_list_of_dict_for_test_with_place = [
     {
@@ -116,6 +116,6 @@ racers_for_patch = [
 
 @pytest.fixture
 def client():
-    app.config.from_object(DefaultConfig)
+    app.config.from_object(TestConfig)
     with app.test_client() as client:
         yield client
