@@ -113,4 +113,4 @@ def test_driver_not_found(patch_groper, client):
     response = client.get("/api/v1/report/drivers/SGV/")
     patch_groper.assert_called()
     assert response.status_code == 404
-    assert {'404': 'Driver not found'} == response.json
+    assert 'Driver not found' == response.json

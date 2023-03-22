@@ -40,7 +40,7 @@ def test_racers_list_of_small_dict_works_as_expected(patch_config,
                                                      patch_groper,
                                                      patch_racer_to_small_dict):
     handle = HandleMyData("")
-    result = handle.racers_list_of_small_dict(racers_for_patch)
+    result = handle.racers_list_of_small_dict()
     patch_groper.assert_called()
     patch_racer_to_small_dict.assert_called()
     assert result == small_list_of_dict_for_test
