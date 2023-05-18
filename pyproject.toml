@@ -1,0 +1,38 @@
+[tool.poetry]
+name = "task-8-rest-api-report-of-monaco-2018-racing"
+version = "0.1.0"
+description = ""
+authors = ["Dmytro Petliovanyi <petliovany@gmail.com>"]
+readme = "README.md"
+packages = [{include = "task_8_rest_api_report_of_monaco_2018_racing"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+flask = "*"
+task-6-report-of-monaco-2018-racing-by-petliovany = {version = "*", source = "testpypi"}
+flask-restful = "*"
+dicttoxml = "*"
+flasgger = "^0.9.5"
+
+
+[[tool.poetry.source]]
+name = "testpypi"
+url = "https://test.pypi.org/simple/"
+
+
+[tool.poetry.group.dev.dependencies]
+flake8 = "*"
+isort = "*"
+mypy = "*"
+pre-commit = "*"
+pytest = "*"
+jinja2 = "*"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.mypy]
+ignore_missing_imports = true
+warn_no_return = false

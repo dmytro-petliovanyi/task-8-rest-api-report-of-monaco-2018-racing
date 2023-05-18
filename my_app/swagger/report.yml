@@ -1,0 +1,42 @@
+summary: List of drivers
+description: Returns a list of all reports
+parameters:
+  - name: format
+    in: query
+    description: The format of the response (json or xml)
+    required: false
+    type: string
+    enum:
+      - json
+      - xml
+  - name: order
+    in: query
+    description: The order to sort drivers (asc or desc)
+    required: false
+    type: string
+    enum:
+      - asc
+      - desc
+responses:
+  200:
+    description: List of all reports
+    schema:
+      type: array
+      items:
+        $ref: '#/definitions/DriverFull'
+
+
+definitions:
+  DriverFullPlace:
+    type: object
+    properties:
+      driver_id:
+        type: string
+      driver_info:
+        type: string
+    example:
+      abbr: "SVF"
+      fullname: "Sebastian Vettel"
+      place: "1"
+      team: "FERRARI"
+      time: "0:01:04.415000"

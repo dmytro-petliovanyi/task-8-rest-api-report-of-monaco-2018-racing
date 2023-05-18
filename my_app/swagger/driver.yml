@@ -1,0 +1,41 @@
+summary: Get a driver by ID
+description: Returns the driver with the specified ID
+parameters:
+  - name: driver_id
+    in: path
+    required: true
+    schema:
+      type: string
+  - name: format
+    in: query
+    description: The format of the response (json or xml)
+    required: false
+    type: string
+    enum:
+      - json
+      - xml
+responses:
+  200:
+    description: The requested driver
+    schema:
+      $ref: '#/definitions/DriverFull'
+  404:
+    description: Driver not found
+
+definitions:
+  DriverFull:
+    type: object
+    properties:
+      abbr:
+        type: string
+      fullname:
+        type: string
+      team:
+        type: string
+      time:
+        type: string
+    example:
+      abbr: "SVF"
+      fullname: "Sebastian Vettel"
+      team: "FERRARI"
+      time: "0:01:04.415000"
